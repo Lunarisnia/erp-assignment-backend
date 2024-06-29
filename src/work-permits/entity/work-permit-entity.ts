@@ -18,8 +18,8 @@ export class WorkPermitEntity {
     reason: string
 
     @Column({type: "timestamp with time zone", name: "start_date"})
-    startDate: Date
+    start_date: string
 
     @Column({type: "timestamp with time zone", name: "end_date"})
-    endDate: Date
+    end_date: string
 }
