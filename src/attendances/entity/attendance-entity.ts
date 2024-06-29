@@ -11,6 +11,6 @@ export class AttendanceEntity {
     @Column()
     name: string
 
-    @Column({type: "timestamp with time zone", name: "clock_in"})
-    clockIn: Date
+    @Column({type: "timestamp with time zone", name: "clock_in",})
+    clock_in: string
 }

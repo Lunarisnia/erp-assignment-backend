@@ -3,13 +3,14 @@ import "reflect-metadata";
 import {AppDataSource} from "./database/data-source";
 import {UserRouter} from "./users/routers/user-router";
 import bodyParser from "body-parser";
+import {AttendanceRouter} from "./attendances/routers/attendance-router";
 const app = express();
-const appRouter = express.Router();
 const port = 3000;
 
 app.use(bodyParser.json())
 
-app.use("/user", UserRouter(appRouter))
+app.use("/user", UserRouter(Router()))
+app.use("/attendance", AttendanceRouter(Router()))
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
