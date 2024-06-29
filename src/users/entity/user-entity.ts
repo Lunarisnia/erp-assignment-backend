@@ -1,4 +1,5 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {AppDataSource} from "../../database/data-source";
 
 @Entity({
     schema: "public",
@@ -20,3 +21,5 @@ export class UserEntity {
     @Column()
     password: string
 }
+
+export const UserRepository = AppDataSource.getRepository(UserEntity);
