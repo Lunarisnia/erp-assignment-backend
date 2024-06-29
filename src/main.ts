@@ -6,9 +6,12 @@ import bodyParser from "body-parser";
 import {AttendanceRouter} from "./attendances/routers/attendance-router";
 import {LeaveRouter} from "./leaves/routers/leave-router";
 import {WorkPermitRouter} from "./work-permits/routers/work-permit-router";
+import Cors from "cors";
+
 const app = express();
 const port = 3000;
 
+app.use(Cors())
 app.use(bodyParser.json())
 
 app.use("/user", UserRouter(Router()))
