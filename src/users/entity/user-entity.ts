@@ -21,5 +21,3 @@ export class UserEntity {
     @Column()
     password: string
 }
-
-export const UserRepository = AppDataSource.getRepository(UserEntity);

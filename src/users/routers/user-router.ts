@@ -1,9 +1,10 @@
 import {Router} from "express";
-import {UserEntity, UserRepository} from "../entity/user-entity";
+import {UserEntity} from "../entity/user-entity";
+import {AppDataSource} from "../../database/data-source";
 
 export const UserRouter = (router: Router) => {
     router.get("/", async (req, res) => {
-        const users: UserEntity[] = await UserRepository.find();
+        const users: UserEntity[] = await AppDataSource.getRepository(UserEntity).find();
 
         res.send(users)
     })
@@ -15,7 +16,7 @@ export const UserRouter = (router: Router) => {
         newUser.email = email;
         newUser.role = role;
         newUser.password = password;
-        await UserRepository.save(newUser);
+        await AppDataSource.getRepository(UserEntity).save(newUser);
 
         res.send(newUser);
     })
@@ -23,9 +24,9 @@ export const UserRouter = (router: Router) => {
     router.delete('/:id', async (req, res) => {
         const {id} = req.params;
         const target: UserEntity = new UserEntity()
-        target.id = id;
+        target.id = parseInt(id);
 
-        await UserRepository.remove(target);
+        await AppDataSource.getRepository(UserEntity).remove(target);
         res.send("Deleted")
     })
 

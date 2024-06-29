@@ -2,9 +2,12 @@ import express, {Router} from "express";
 import "reflect-metadata";
 import {AppDataSource} from "./database/data-source";
 import {UserRouter} from "./users/routers/user-router";
+import bodyParser from "body-parser";
 const app = express();
 const appRouter = express.Router();
 const port = 3000;
+
+app.use(bodyParser.json())
 
 app.use("/user", UserRouter(appRouter))
 
